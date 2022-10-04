@@ -1,49 +1,30 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../../models/User");
-const bcrypt = require("bcryptjs");
-const { RegisterValidation } = require("../../utils/RegisterValidation");
-
 // REGISTER : /api/admin/register
-router.post("/register", async (req, res) => {
-    try {
-        let { fName, lName, phone, adresse, email, password, confirmPassword } =
-            req.body;
+router.post("/register", require("./register"));
 
-        //Look for existed user
-        let testUser = await User.findOne({ email });
-        if (testUser) {
-            return res.status(401).json({
-                status: false,
-                message: "Email already exists, please try another one",
-            });
-        }
-        //control validation
-        let { error } = await RegisterValidation(req.body);
-        if (error) {
-            return res
-                .status(401)
-                .json({ status: false, error: error.details[0].message });
-        }
-        //hash password
-        let salt = await bcrypt.genSalt(10);
-        let hashedPassword = await bcrypt.hash(password, salt);
-        const newUser = new User({
-            fName,
-            lName,
-            phone,
-            adresse,
-            email,
-            password: hashedPassword,
-        });
-        const user = await newUser.save();
-        res.status(200).json({
-            message: "Your account was created successfully",
-        });
-    } catch (error) {
-        if (error) throw error;
-        res.status(403).json({ status: false, error });
-    }
-});
+//LOGIN : /api/admin/login
+router.post("/login", require("./login"));
+
+//ADD PRODUCT : /api/admin/addProduct
+router.post("/addProduct", require("./addProduct"));
+
+//UPDATE PRODUCT: /api/admin/updateProduct
+router.put("/updateProduct/:id", require("./updateProduct"));
+
+// DELETE PRODUCT : /api/admin/deleteProduct
+router.delete("/deleteProduct/:id", require("./deleteProduct"));
+
+//GET PRODUCTS : /api/admin/getProducts
+router.get("/products", require("./getProducts"));
+
+//GET INSTOCK PRODUCTS : /api/admin/products/available
+router.get("/products/available", require("./availableProducts"));
+
+//GET USERS LIST
+router.get("/users", require("./getUsers"))
+
+//Ban User : /api/admin/banUser
+router.put("/banUser/:id", require("./banUser"));
 
 module.exports = router;
