@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const upload = require("../../middlewares/uploads");
 // REGISTER : /api/admin/register
 router.post("/register", require("./register"));
 
@@ -7,7 +8,7 @@ router.post("/register", require("./register"));
 router.post("/login", require("./login"));
 
 //ADD PRODUCT : /api/admin/addProduct
-router.post("/addProduct", require("./addProduct"));
+router.post("/addProduct", upload.array("photos", 10), require("./addProduct"));
 
 //UPDATE PRODUCT: /api/admin/updateProduct
 router.put("/updateProduct/:id", require("./updateProduct"));
@@ -22,7 +23,7 @@ router.get("/products", require("./getProducts"));
 router.get("/products/available", require("./availableProducts"));
 
 //GET USERS LIST
-router.get("/users", require("./getUsers"))
+router.get("/users", require("./getUsers"));
 
 //Ban User : /api/admin/banUser
 router.put("/banUser/:id", require("./banUser"));
