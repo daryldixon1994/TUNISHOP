@@ -1,3 +1,4 @@
 /node_modules
 .env
 TUTO.txt
+/client/node_modules

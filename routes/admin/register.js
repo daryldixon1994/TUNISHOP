@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const { RegisterValidation } = require("../../utils/RegisterValidation");
 module.exports = async (req, res) => {
     try {
-        let { fName, lName, phone, adresse, email, password, confirmPassword } =
+        let { fName, lName, phone, adresse, email, password } =
             req.body;
 
         //Look for existed user

@@ -26,16 +26,16 @@ const RegisterValidation = (data) => {
                 minDomainSegments: 2,
             })
             .messages({
-                "string.empty": "email cannot be an empty field",
-                "string.email": "your email must be a valid email",
-                "string.required": "email is a required field",
+                "string.empty": "Email cannot be an empty field",
+                "string.email": "Your email must be a valid email",
+                "string.required": "Email is a required field",
             }),
         password: Joi.string()
             .min(8)
             .required()
             .pattern(
                 new RegExp(
-                "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[.!@#$%^&*/])(?=.{8,})"
+                    "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[.!@#$%^&*/])(?=.{8,})"
                 )
             )
             .messages({

@@ -2,15 +2,18 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const secretKey = process.env.SECRET_KEY;
 module.exports = async (req, res, next) => {
-    const token = req.header("jwt");
-    jwt.verify(token, secretKey, (err, result) => {
-        if (err) {
-            return res.status(400).json({
+    try {
+        let token = req.header("jwt");
+        if (!token) {
+            return res.status(401).json({
                 status: false,
-                message: "Please Login",
-                login: false,
+                message: "Access denied, you have to login",
             });
         }
+        let verifiedToken = await jwt.verify(token, process.env.SECRET_KEY);
         next();
-    });
+    } catch (error) {
+        if (error) throw error;
+        res.status(401).json({ status: false, error });
+    }
 };
