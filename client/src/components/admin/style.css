@@ -1,0 +1,27 @@
+#admin-dashborad-container {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+}
+#section-item {
+    /* border: 1px red solid; */
+    box-shadow: 1px 1px 2px black;
+    min-height: 30vh;
+    width: 35%;
+    padding: 20px;
+    margin: 10px;
+}
+#section-item:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+#add-product-container {
+    border: 2px rgba(0, 0, 0, 0.103) solid;
+    width: 70%;
+    margin: auto;
+    padding: 50px;
+}

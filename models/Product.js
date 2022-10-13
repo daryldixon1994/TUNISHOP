@@ -20,7 +20,7 @@ const productSchema = new Schema(
             required: true,
         },
         inStock: {
-            type: Boolean,
+            type: String,
             required: true,
         },
         color: {

@@ -17,6 +17,9 @@ function Login() {
                     localStorage.setItem("isBanned", res.data.data.isBanned);
                     localStorage.setItem("isUser", res.data.data.isUser);
                     localStorage.setItem("token", res.data.data.token);
+                    if (localStorage.getItem("isAdmin") == "true") {
+                        return navigate("/dashboard");
+                    }
                     navigate("/myList");
                 }
             })
