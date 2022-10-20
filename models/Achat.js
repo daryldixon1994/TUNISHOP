@@ -33,6 +33,10 @@ const achatSchema = new Schema(
                 required: true,
             },
         },
+        id: {
+            type: Schema.Types.ObjectId,
+            required: true,
+        },
     },
     { timestamps: true }
 );

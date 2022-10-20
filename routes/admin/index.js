@@ -10,19 +10,26 @@ router.post("/login", require("./login"));
 //ADD PRODUCT : /api/admin/addProduct
 router.post("/addProduct", upload.array("photos", 10), require("./addProduct"));
 
-//UPDATE PRODUCT: /api/admin/updateProduct
-router.put("/updateProduct/:id", require("./updateProduct"));
+//UPDATE PRODUCT: /api/admin/updateProduct/:id
+router.post(
+    "/updateProduct/:id",
+    upload.array("photos", 10),
+    require("./updateProduct")
+);
 
 // DELETE PRODUCT : /api/admin/deleteProduct
 router.delete("/deleteProduct/:id", require("./deleteProduct"));
 
-//GET PRODUCTS : /api/admin/getProducts
+//GET PRODUCTS : /api/admin/products
 router.get("/products", require("./getProducts"));
+
+//GET PRODUCT : /api/admin/product/:id
+router.get("/product/:id", require("./getProduct"));
 
 //GET INSTOCK PRODUCTS : /api/admin/products/available
 router.get("/products/available", require("./availableProducts"));
 
-//GET USERS LIST
+//GET USERS LIST : /api/admin/users
 router.get("/users", require("./getUsers"));
 
 //Ban User : /api/admin/banUser

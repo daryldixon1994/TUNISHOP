@@ -20,7 +20,7 @@ function Login() {
                     if (localStorage.getItem("isAdmin") == "true") {
                         return navigate("/dashboard");
                     }
-                    navigate("/myList");
+                    navigate("/");
                 }
             })
             .catch((err) => console.dir(err.response.data.message));

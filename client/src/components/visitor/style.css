@@ -1,0 +1,15 @@
+#min-price,
+#max-price {
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#min-range,
+#max-range {
+    width: 50%;
+}
+#price-container {
+    width: 50%;
+    display: flex;
+}

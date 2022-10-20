@@ -42,13 +42,7 @@ function AddProducts() {
     return (
         <div>
             <h1>Add new product</h1>
-            <Form
-                noValidate
-                // validated={validated}
-                // onSubmit={handleSubmit}
-
-                id="add-product-container"
-            >
+            <Form noValidate id="add-product-container">
                 <Row className="mb-3">
                     <Form.Group as={Col} md="4" controlId="validationCustom01">
                         <Form.Label>Product name</Form.Label>
